@@ -1,0 +1,40 @@
+{
+  "sources": {
+    "apt": {
+      "locked_version": "2.3.0"
+    },
+    "yum": {
+      "locked_version": "3.0.0"
+    },
+    "yum-epel": {
+      "locked_version": "0.1.6"
+    },
+    "rbenv": {
+      "locked_version": "1.6.5"
+    },
+    "mailcatcher": {
+      "path": "."
+    },
+    "git": {
+      "locked_version": "2.6.0"
+    },
+    "dmg": {
+      "locked_version": "2.0.8"
+    },
+    "build-essential": {
+      "locked_version": "1.4.2"
+    },
+    "windows": {
+      "locked_version": "1.11.0"
+    },
+    "chef_handler": {
+      "locked_version": "1.1.4"
+    },
+    "runit": {
+      "locked_version": "1.4.6"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
+    }
+  }
+}
