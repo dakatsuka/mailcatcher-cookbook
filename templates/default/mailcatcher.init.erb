@@ -1,0 +1,64 @@
+#!/bin/bash
+ 
+PID_FILE=<%= node[:mailcatcher][:pid_file] %>
+NAME=mailcatcher
+PROG=<%= node[:rbenv][:root_path] %>/versions/1.9.3-p484/bin/mailcatcher
+USER=<%= node[:mailcatcher][:user] %>
+GROUP=<%= node[:mailcatcher][:group] %>
+ 
+start() {
+	echo -n "Starting MailCatcher"
+	if start-stop-daemon --stop --quiet --pidfile $PID_FILE --signal 0
+	then
+		echo " already running."
+		exit
+	fi
+	start-stop-daemon \
+		--start \
+		--pidfile $PID_FILE \
+		--make-pidfile \
+		--background \
+		--exec $PROG \
+		--user $USER \
+		--group $GROUP \
+		--chuid $USER \
+		-- \
+		--foreground \
+		--http-ip <%= node[:mailcatcher][:http_ip] %> \
+		--http-port <%= node[:mailcatcher][:http_port] %> \
+		--smtp-ip <%= node[:mailcatcher][:smtp_ip] %> \
+		--smtp-port <%= node[:mailcatcher][:smtp_port] %>
+	echo "."
+	return $?
+}
+ 
+stop() {
+	echo -n "Stopping MailCatcher"
+	start-stop-daemon \
+		--stop \
+		--oknodo \
+		--pidfile $PID_FILE
+	echo "."
+	return $?
+}
+ 
+restart() {
+	stop
+	start
+}
+ 
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		restart
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+		;;
+esac
