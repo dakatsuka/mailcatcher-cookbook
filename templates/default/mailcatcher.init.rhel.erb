@@ -1,0 +1,44 @@
+#!/bin/bash
+#
+# chkconfig: 2345 80 30
+# description: MailCatcher daemon
+
+. /etc/init.d/functions
+
+NAME=mailcatcher
+PROG=<%= node[:rbenv][:root_path] %>/versions/1.9.3-p484/bin/mailcatcher
+
+start() {
+	echo -n "Starting MailCatcher"
+  exec $PROG --http-ip <%= node[:mailcatcher][:http_ip] %> --http-port <%= node[:mailcatcher][:http_port] %> --smtp-ip <%= node[:mailcatcher][:smtp_ip] %> --smtp-port <%= node[:mailcatcher][:smtp_port] %>
+	echo "."
+	return $?
+}
+
+stop() {
+	echo "Stopping MailCatcher"
+	killall $NAME
+	echo "."
+	return $?
+}
+
+restart() {
+	start
+	stop
+}
+
+case "$1" in
+	start)
+		start
+		;;
+	stop)
+		stop
+		;;
+	restart)
+		restart
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		;;
+esac
+exit 0

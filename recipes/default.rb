@@ -5,9 +5,9 @@
 # 2013, Dai Akatsuka
 #
 case node['platform_family']
-when 'debian', 'ubuntu'
+when 'debian'
   package 'libsqlite3-dev'
-when 'rhel', 'fedora', 'suse'
+when 'rhel', 'fedora'
   package 'sqlite-devel'
 end
 
@@ -42,7 +42,14 @@ end
 
 template 'mailcatcher' do
   path '/etc/init.d/mailcatcher'
-  source 'mailcatcher.init.erb'
+  
+  case node['platform_family']
+  when 'debian'
+    source 'mailcatcher.init.debian.erb'
+  when 'rhel', 'fedora'
+    source 'mailcatcher.init.rhel.erb'
+  end
+
   owner 'root'
   group 'root'
   mode '0755'
