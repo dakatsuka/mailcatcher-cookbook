@@ -16,3 +16,6 @@ suites:
       - recipe[yum]
       - recipe[mailcatcher::default]
     attributes:
+
+busser:
+  sudo: true
