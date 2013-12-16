@@ -21,7 +21,7 @@ end
 
 user 'mailcatcher' do
   group 'mailcatcher'
-  home '/var/run/mailcatcher'
+  home '/var/lib/mailcatcher'
   shell '/bin/false'
   password nil
   supports :manage_home => true

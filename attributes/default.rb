@@ -1,6 +1,6 @@
 default[:mailcatcher][:user]      = "mailcatcher"
 default[:mailcatcher][:group]     = "mailcatcher"
-default[:mailcatcher][:pid_file]  = "/var/run/mailcatcher/mailcatcher.pid"
+default[:mailcatcher][:pid_file]  = "/var/lib/mailcatcher/mailcatcher.pid"
 default[:mailcatcher][:http_ip]   = "127.0.0.1"
 default[:mailcatcher][:http_port] = "1080"
 default[:mailcatcher][:smtp_ip]   = "127.0.0.1"
