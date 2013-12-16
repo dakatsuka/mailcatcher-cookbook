@@ -1,24 +1,14 @@
-mailcatcher Cookbook
-====================
-TODO: Enter the cookbook description here.
+# MailCatcher Cookbook
+This cookbook install MailCatcher.
 
-e.g.
-This cookbook makes your favorite breakfast sandwich.
 
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+## Requirements
+### cookbooks
+- `build-essential`
+- `rbenv`
 
-e.g.
-#### packages
-- `toaster` - mailcatcher needs toaster to brown your bagel.
-
-Attributes
-----------
-TODO: List you cookbook attributes here.
-
-e.g.
-#### mailcatcher::default
+## Attributes
+### mailcatcher::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,19 +17,52 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['mailcatcher']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>[:mailcatcher][:user]</tt></td>
+    <td>string</td>
+    <td>User that MailCatcher will run as.</td>
+    <td><tt>mailcatcher</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:group]</tt></td>
+    <td>string</td>
+    <td>Group for MailCatcher</td>
+    <td><tt>mailcatcher</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:pid_file]</tt></td>
+    <td>string</td>
+    <td>Location of PID file</td>
+    <td><tt>/var/run/mailcatcher/mailcatcher.pid</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:http_ip]</tt></td>
+    <td>string</td>
+    <td>IP address of the HTTP</td>
+    <td><tt>127.0.0.1</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:http_port]</tt></td>
+    <td>string</td>
+    <td>Port of the HTTP</td>
+    <td><tt>1080</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:smtp_ip]</tt></td>
+    <td>string</td>
+    <td>IP address of the SMTP</td>
+    <td><tt>127.0.0.1</tt></td>
+  </tr>
+  <tr>
+    <td><tt>[:mailcatcher][:smtp_port]</tt></td>
+    <td>string</td>
+    <td>Port of the SMTP</td>
+    <td><tt>1025</tt></td>
   </tr>
 </table>
 
-Usage
------
-#### mailcatcher::default
-TODO: Write usage instructions for each cookbook.
+## Usage
+### mailcatcher::default
 
-e.g.
 Just include `mailcatcher` in your node's `run_list`:
 
 ```json
@@ -51,11 +74,23 @@ Just include `mailcatcher` in your node's `run_list`:
 }
 ```
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+### mailcatcher::php
 
-e.g.
+Just include `mailcatcher::php` in your node's `run_list`:
+
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[php]",
+    "recipe[mailcatcher]",
+    "recipe[mailcatcher::php]"
+  ]
+}
+```
+
+## Contributing
+
 1. Fork the repository on Github
 2. Create a named feature branch (like `add_component_x`)
 3. Write your change
@@ -63,6 +98,8 @@ e.g.
 5. Run the tests, ensuring they all pass
 6. Submit a Pull Request using Github
 
-License and Authors
--------------------
-Authors: TODO: List authors
+## License and Authors
+
+Authors: Dai Akatsuka <d.akatsuka@gmail.com>
+
+License: Apache License, Version 2.0
