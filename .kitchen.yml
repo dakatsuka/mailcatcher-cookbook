@@ -15,7 +15,10 @@ suites:
       - recipe[apt]
       - recipe[yum]
       - recipe[mailcatcher::default]
+      - recipe[mailcatcher::php]
     attributes:
+      php:
+        ext_conf_dir: /etc/php5/conf.d
 
 busser:
   sudo: true
