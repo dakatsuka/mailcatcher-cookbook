@@ -31,31 +31,31 @@ This cookbook install MailCatcher.
   <tr>
     <td><tt>[:mailcatcher][:pid_file]</tt></td>
     <td>string</td>
-    <td>Location of PID file</td>
+    <td>Location of pid file</td>
     <td><tt>/var/run/mailcatcher/mailcatcher.pid</tt></td>
   </tr>
   <tr>
     <td><tt>[:mailcatcher][:http_ip]</tt></td>
     <td>string</td>
-    <td>IP address of the HTTP</td>
+    <td>IP address of the http</td>
     <td><tt>127.0.0.1</tt></td>
   </tr>
   <tr>
     <td><tt>[:mailcatcher][:http_port]</tt></td>
-    <td>string</td>
-    <td>Port of the HTTP</td>
+    <td>int</td>
+    <td>Port of the http</td>
     <td><tt>1080</tt></td>
   </tr>
   <tr>
     <td><tt>[:mailcatcher][:smtp_ip]</tt></td>
     <td>string</td>
-    <td>IP address of the SMTP</td>
+    <td>IP address of the smtp</td>
     <td><tt>127.0.0.1</tt></td>
   </tr>
   <tr>
     <td><tt>[:mailcatcher][:smtp_port]</tt></td>
-    <td>string</td>
-    <td>Port of the SMTP</td>
+    <td>int</td>
+    <td>Port of the smtp</td>
     <td><tt>1025</tt></td>
   </tr>
 </table>
@@ -100,6 +100,6 @@ Just include `mailcatcher::php` in your node's `run_list`:
 
 ## License and Authors
 
-Authors: Dai Akatsuka <d.akatsuka@gmail.com>
+Authors: Dai Akatsuka  / d.akatsuka@gmail.com
 
 License: Apache License, Version 2.0
